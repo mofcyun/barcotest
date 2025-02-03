@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인적사항 입력</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>인적사항 입력</h1>
+        <form id="personalInfoForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="company">회사명</label>
+                <input type="text" id="company" required>
+                <div class="error" id="company-error">회사명을 입력해주세요.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">부서명</label>
+                <input type="text" id="department" required>
+                <div class="error" id="department-error">부서명을 입력해주세요.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="position">직급명</label>
+                <input type="text" id="position" required>
+                <div class="error" id="position-error">직급명을 입력해주세요.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" required>
+                <div class="error" id="name-error">이름을 입력해주세요.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">나이</label>
+                <input type="number" id="age" required min="1">
+                <div class="error" id="age-error">올바른 나이를 입력해주세요.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">연락처</label>
+                <input type="tel" id="phone" required placeholder="010-0000-0000">
+                <div class="error" id="phone-error">올바른 연락처 형식으로 입력해주세요.</div>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">시험 시작하기</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            const fields = ['company', 'department', 'position', 'name', 'age', 'phone'];
+            let isValid = true;
+
+            // 기본 필드 검증
+            fields.forEach(field => {
+                const value = document.getElementById(field).value.trim();
+                const errorElement = document.getElementById(`${field}-error`);
+                
+                if (!value) {
+                    isValid = false;
+                    errorElement.style.display = 'block';
+                    document.getElementById(field).style.borderColor = '#dc3545';
+                } else {
+                    errorElement.style.display = 'none';
+                    document.getElementById(field).style.borderColor = '#ddd';
+                }
+            });
+
+            // 전화번호 형식 검증
+            const phonePattern = /^010-\d{4}-\d{4}$/;
+            const phone = document.getElementById('phone').value;
+            if (!phonePattern.test(phone)) {
+                isValid = false;
+                document.getElementById('phone-error').style.display = 'block';
+                document.getElementById('phone').style.borderColor = '#dc3545';
+            }
+
+            if (isValid) {
+                // 사용자 정보 저장
+                const userInfo = {
+                    company: document.getElementById('company').value,
+                    department: document.getElementById('department').value,
+                    position: document.getElementById('position').value,
+                    name: document.getElementById('name').value,
+                    age: document.getElementById('age').value,
+                    phone: document.getElementById('phone').value
+                };
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+                // 시험 페이지로 이동
+                window.location.href = 'exam.html';
+            }
+
+            return false;
+        }
+
+        // 전화번호 자동 하이픈 추가
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            if (value.length > 3 && value.length <= 7) {
+                value = value.slice(0,3) + "-" + value.slice(3);
+            } else if (value.length > 7) {
+                value = value.slice(0,3) + "-" + value.slice(3,7) + "-" + value.slice(7,11);
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html> 

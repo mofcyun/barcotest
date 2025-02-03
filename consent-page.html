@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 동의</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: bold;  /* 전체 폰트 bold 처리 */
+        }
+        .container {
+            max-width: 500px;  /* 800px에서 500px로 수정 */
+            width: 90%;       /* 100%에서 90%로 수정 */
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            text-align: center;  /* 모든 텍스트 중앙 정렬 */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;  /* 제목 크기 조정 */
+        }
+        .consent-text {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .consent-section {
+            background-color: #f8f9fa;
+            padding: 1.2rem;    /* 1.5rem에서 1.2rem으로 수정 */
+            border-radius: 8px;
+            margin-bottom: 1.2rem;  /* 1.5rem에서 1.2rem으로 수정 */
+            text-align: center;
+            width: 90%;        /* 섹션 너비 추가 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .consent-section h2 {
+            color: #007bff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .consent-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .consent-section li {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .consent-check {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .consent-check label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .consent-check input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>개인정보 수집 및 이용 동의</h1>
+        
+        <div class="consent-section">
+            <h2>1. 수집하는 개인정보 항목</h2>
+            <ul>
+                <li>회사명</li>
+                <li>부서명</li>
+                <li>직급명</li>
+                <li>이름</li>
+                <li>나이</li>
+                <li>연락처</li>
+            </ul>
+        </div>
+
+        <div class="consent-section">
+            <h2>2. 개인정보의 수집 및 이용목적</h2>
+            <ul>
+                <li>시험 응시자 신원 확인</li>
+                <li>시험 결과 통보 및 관리</li>
+                <li>자격증 발급 및 관리</li>
+            </ul>
+        </div>
+
+        <div class="consent-section">
+            <h2>3. 개인정보의 보유 및 이용기간</h2>
+            <p>수집일로부터 5년</p>
+        </div>
+
+        <div class="consent-check">
+            <label>
+                <input type="checkbox" id="consentCheckbox">
+                <span>위 개인정보 수집 및 이용에 동의합니다.</span>
+            </label>
+        </div>
+
+        <div class="button-container">
+            <button onclick="checkConsent()">다음 단계로</button>
+        </div>
+    </div>
+
+    <script>
+        function checkConsent() {
+            const checkbox = document.getElementById('consentCheckbox');
+            if (checkbox.checked) {
+                window.location.href = 'personal-info.html';
+            } else {
+                alert('개인정보 수집 및 이용에 동의해주세요.');
+            }
+        }
+    </script>
+</body>
+</html> 

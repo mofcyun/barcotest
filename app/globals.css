@@ -3,19 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+.title-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.question {
+  @apply bg-white rounded-lg shadow-md p-6 mb-6;
+}
+
+.question-content {
+  @apply mb-4;
+}
+
+.question-number {
+  @apply inline-block bg-blue-600 text-white rounded-full w-8 h-8 text-center leading-8 mr-3;
+}
+
+.answer-input {
+  @apply w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none;
+}
+
+.char-count {
+  @apply text-sm text-gray-500 text-right mt-1;
+}
+
+.quiz-pagination {
+  @apply flex justify-center gap-2 mt-8;
+}
+
+.quiz-pagination button {
+  @apply px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors;
+}
+
+.quiz-pagination button.active {
+  @apply bg-blue-600 text-white border-blue-600;
+}
+
+.submit-btn {
+  @apply px-8 py-3 bg-red-600 text-white rounded-lg text-xl hover:bg-red-700 transition-colors;
 }

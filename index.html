@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Tech</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        .title-page {
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .title-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        .logo {
+            max-width: 600px;
+            width: 90%;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        .main-title {
+            font-size: 72px;
+            font-weight: bold;
+            color: #007bff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            line-height: 1.2;
+            transition: transform 0.3s ease;
+        }
+        .main-title:hover {
+            transform: scale(1.02);
+        }
+        .start-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 20px;
+            color: white;
+            background: #007bff;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .start-button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(45deg, #007bff, #00ff88);
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        .shape2 {
+            width: 400px;
+            height: 400px;
+            bottom: -200px;
+            right: -200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-page">
+        <div class="decorative-shape shape1"></div>
+        <div class="decorative-shape shape2"></div>
+        <div class="title-content">
+            <img src="./BT_로고_고화질.png" 
+                 alt="Basic Tech Logo" 
+                 class="logo"
+                 onerror="this.onerror=null; this.src='BT_로고_고화질.png';">
+            <div class="main-title">
+                베이직테크<br>
+                Barco E2 Level 1<br>
+                TEST
+            </div>
+            <a href="admin-login.html" class="start-button">시작하기</a>
+        </div>
+    </div>
+</body>
+</html> 

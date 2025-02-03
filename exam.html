@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barco E2 Level 1 TEST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-weight: bold;
+        }
+        .quiz-container {
+            max-width: 800px;
+            width: 90%;
+            margin: 20px auto;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question-content {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .question-number {
+            background: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .answer-input {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            resize: vertical;
+        }
+        .char-count {
+            text-align: right;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        .quiz-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            background: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .quiz-pagination button {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 20px;
+            color: #666;
+            font-weight: bold;
+        }
+        .quiz-pagination button.active {
+            background: #007bff;
+            color: white;
+        }
+        .quiz-pagination button:hover {
+            background: #f0f0f0;
+        }
+        .quiz-pagination button.active:hover {
+            background: #0056b3;
+        }
+        #submitButton {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submitButton:hover {
+            background: #c82333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .modal-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .confirm-btn {
+            background: #dc3545;
+            color: white;
+        }
+        .cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body> 
+    <div class="quiz-container">
+        <!-- 1페이지 (1-10번 문제) -->
+        <div class="page" id="page1">
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">1</span>
+                    <p>Barco E2의 최대 입력 해상도는 얼마입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="1"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">2</span>
+                    <p>E2의 최대 출력 해상도는 얼마입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="2"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">3</span>
+                    <p>E2의 최대 입력 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="3"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">4</span>
+                    <p>E2의 최대 출력 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="4"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">5</span>
+                    <p>E2의 최대 레이어 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="5"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">6</span>
+                    <p>E2의 최대 AUX 출력 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="6"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">7</span>
+                    <p>E2의 최대 MVR 출력 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="7"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">8</span>
+                    <p>E2의 최대 스틸 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="8"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">9</span>
+                    <p>E2의 최대 데스티네이션 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="9"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">10</span>
+                    <p>E2의 최대 프리셋 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="10"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+        </div>
+
+        <!-- 2페이지 (11-20번 문제) -->
+        <div class="page" id="page2" style="display: none;">
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">11</span>
+                    <p>E2의 최대 User Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="11"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">12</span>
+                    <p>E2의 최대 Source Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="12"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">13</span>
+                    <p>E2의 최대 Background Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="13"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">14</span>
+                    <p>E2의 최대 Cue Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="14"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">15</span>
+                    <p>E2의 최대 Destination Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="15"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">16</span>
+                    <p>E2의 최대 Layer Key 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="16"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">17</span>
+                    <p>E2의 최대 User Key Bank 저장 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="17"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">18</span>
+                    <p>E2의 최대 Screen Destination 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="18"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">19</span>
+                    <p>E2의 최대 Aux Destination 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="19"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">20</span>
+                    <p>E2의 최대 MVR Destination 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="20"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+        </div>
+
+        <!-- 3페이지 (21-30번 문제) -->
+        <div class="page" id="page3" style="display: none;">
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">21</span>
+                    <p>E2의 Native Rate는 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="21"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">22</span>
+                    <p>E2의 최대 Input Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="22"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">23</span>
+                    <p>E2의 최대 Output Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="23"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">24</span>
+                    <p>E2의 최대 VPU Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="24"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">25</span>
+                    <p>E2의 최대 MVPU Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="25"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">26</span>
+                    <p>E2의 최대 Expansion Link Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="26"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">27</span>
+                    <p>E2의 최대 Genlock Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="27"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">28</span>
+                    <p>E2의 최대 Controller Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="28"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">29</span>
+                    <p>E2의 최대 External Link Card 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="29"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">30</span>
+                    <p>E2의 최대 Power Supply 개수는 몇 개입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="30"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+        </div>
+
+        <!-- 4페이지 (31-40번 문제) -->
+        <div class="page" id="page4" style="display: none;">
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">31</span>
+                    <p>E2의 Input Card에서 지원하는 입력 신호 종류를 모두 나열하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="31"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">32</span>
+                    <p>E2의 Output Card에서 지원하는 출력 신호 종류를 모두 나열하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="32"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">33</span>
+                    <p>E2의 VPU Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="33"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">34</span>
+                    <p>E2의 MVPU Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="34"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">35</span>
+                    <p>E2의 Expansion Link Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="35"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">36</span>
+                    <p>E2의 Genlock Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="36"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">37</span>
+                    <p>E2의 Controller Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="37"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">38</span>
+                    <p>E2의 External Link Card의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="38"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">39</span>
+                    <p>E2의 Power Supply의 역할은 무엇입니까?</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="39"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">40</span>
+                    <p>E2의 각 Card들의 배치 순서를 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="40"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+        </div>
+
+        <!-- 5페이지 (41-50번 문제) -->
+        <div class="page" id="page5" style="display: none;">
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">41</span>
+                    <p>E2의 Layer Mode의 종류와 특징을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="41"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">42</span>
+                    <p>E2의 Background Mode의 종류와 특징을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="42"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">43</span>
+                    <p>E2의 Transition Effect의 종류와 특징을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="43"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">44</span>
+                    <p>E2의 Source Mode의 종류와 특징을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="44"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">45</span>
+                    <p>E2의 Test Pattern의 종류와 특징을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="45"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">46</span>
+                    <p>E2의 Still Store의 특징과 사용법을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="46"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">47</span>
+                    <p>E2의 Preset의 특징과 사용법을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="47"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">48</span>
+                    <p>E2의 Cue의 특징과 사용법을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="48"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">49</span>
+                    <p>E2의 User Key의 특징과 사용법을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="49"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+
+            <div class="question">
+                <div class="question-content">
+                    <span class="question-number">50</span>
+                    <p>E2의 Source Key의 특징과 사용법을 설명하시오.</p>
+                </div>
+                <textarea class="answer-input" placeholder="답변을 입력하세요..." maxlength="1000" data-question="50"></textarea>
+                <div class="char-count">0 / 1000</div>
+            </div>
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="quiz-pagination">
+            <button onclick="showPage(1)" class="active">1</button>
+            <button onclick="showPage(2)">2</button>
+            <button onclick="showPage(3)">3</button>
+            <button onclick="showPage(4)">4</button>
+            <button onclick="showPage(5)">5</button>
+        </div>
+
+        <!-- 제출 버튼 -->
+        <button id="submitButton">시험 제출하기</button>
+    </div>
+
+    <!-- 제출 확인 모달 -->
+    <div id="submitModal" class="modal">
+        <div class="modal-content">
+            <h2>시험 제출</h2>
+            <p>정말로 시험을 제출하시겠습니까?</p>
+            <div class="modal-buttons">
+                <button class="confirm-btn" onclick="submitExam()">확인</button>
+                <button class="cancel-btn" onclick="closeModal()">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 현재 페이지 표시
+        function showPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(`page${pageNumber}`).style.display = 'block';
+            
+            // 페이지네이션 버튼 활성화 상태 업데이트
+            document.querySelectorAll('.quiz-pagination button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.quiz-pagination button:nth-child(${pageNumber})`).classList.add('active');
+        }
+
+        // 답변 자동 저장
+        document.querySelectorAll('.answer-input').forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                const questionNumber = this.dataset.question;
+                const answer = this.value;
+                localStorage.setItem(`question_${questionNumber}`, answer);
+                
+                // 글자 수 카운트 업데이트
+                const charCount = this.nextElementSibling;
+                charCount.textContent = `${this.value.length} / 1000`;
+            });
+        });
+
+        // 저장된 답변 불러오기
+        function loadSavedAnswers() {
+            document.querySelectorAll('.answer-input').forEach(textarea => {
+                const questionNumber = textarea.dataset.question;
+                const savedAnswer = localStorage.getItem(`question_${questionNumber}`);
+                if (savedAnswer) {
+                    textarea.value = savedAnswer;
+                    textarea.nextElementSibling.textContent = `${savedAnswer.length} / 1000`;
+                }
+            });
+        }
+
+        // 제출 모달 표시
+        document.getElementById('submitButton').addEventListener('click', function() {
+            document.getElementById('submitModal').style.display = 'flex';
+        });
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('submitModal').style.display = 'none';
+        }
+
+        // 시험 제출
+        function submitExam() {
+            const answers = {};
+            document.querySelectorAll('.answer-input').forEach(textarea => {
+                const questionNumber = textarea.dataset.question;
+                answers[questionNumber] = textarea.value;
+            });
+
+            // 답안 저장
+            localStorage.setItem('examAnswers', JSON.stringify(answers));
+            localStorage.setItem('examSubmitted', 'true');
+            localStorage.setItem('submitTime', new Date().toISOString());
+
+            alert('시험이 성공적으로 제출되었습니다.');
+            window.location.href = 'index.html'; // 시험 완료 후 메인 페이지로 이동
+        }
+
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage(1); // 첫 페이지 표시
+            loadSavedAnswers(); // 저장된 답변 불러오기
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('submitModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html> 
